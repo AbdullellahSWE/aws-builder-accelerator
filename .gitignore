@@ -2,6 +2,10 @@
 .pytest_cache
 *.egg-info
 
+/fastapi-layer.zip
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
