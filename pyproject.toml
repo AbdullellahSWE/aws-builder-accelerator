@@ -10,6 +10,8 @@ dependencies = [
     "boto3>=1.43.121",
     "mangum>=0.22.0",
     "aws-lambda-powertools[tracer]>=3.38.0",
+    "aws-cdk-lib>=2.275.0",
+    "botocore[crt]>=1.43.121",
 ]
 
 [build-system]
