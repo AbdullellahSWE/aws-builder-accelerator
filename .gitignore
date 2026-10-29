@@ -1,25 +1,21 @@
-*.swp
-.pytest_cache
-*.egg-info
+[project]
+name = "hr-leave-portal"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.162.0",
+    "pydantic>=2.14.1",
+    "boto3>=1.43.121",
+    "mangum>=0.22.0",
+    "aws-lambda-powertools[tracer]>=3.38.0",
+]
 
-/fastapi-layer.zip
-
-
-
-# Byte-compiled / optimized / DLL files
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# CDK Context & Staging files
-.cdk.staging/
+*.pyc
 cdk.out/
+.venv/

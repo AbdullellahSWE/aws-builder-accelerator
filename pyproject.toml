@@ -1,32 +1,22 @@
 [project]
 name = "hr-leave-portal"
 version = "0.1.0"
-description = "Add your description here"
+description = "HR Leave Portal API"
 readme = "README.md"
-authors = [
-    { name = "Abdullellah", email = "a.alwasel5@gmail.com" }
-]
 requires-python = ">=3.14"
 dependencies = [
-    "aws-cdk-lib>=2.273.0,<3.0.0",
-    "constructs>=10.5.0,<11.0.0",
+    "fastapi>=0.162.0",
+    "pydantic>=2.14.1",
+    "boto3>=1.43.121",
+    "mangum>=0.22.0",
+    "aws-lambda-powertools[tracer]>=3.38.0",
 ]
 
-[project.scripts]
-hr-leave-portal = "hr_leave_portal:main"
-
 [build-system]
-requires = ["uv_build>=0.13.5,<0.14.0"]
-build-backend = "uv_build"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-<<<<<<< HEAD
-    "boto3>=1.43.121",
-    "fastapi>=0.162.0",
-=======
-    "mangum>=0.22.0",
->>>>>>> deployToLambda
-    "pytest==8.4.2",
     "uvicorn>=0.54.0",
 ]
