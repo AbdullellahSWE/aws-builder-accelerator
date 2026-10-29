@@ -15,6 +15,14 @@ def create_employee(payload: EmployeeIn):
 def list_employees():
     return {"employees": employee_service.list_all()}
 
+@router.put("/employees/{employee_id}")
+def save_employee(employee_id: str, payload: EmployeeIn):
+    return employee_service.save(employee_id, payload.model_dump(mode="json"))
+
+@router.delete("/employees/{employee_id}")
+def delete_employee(employee_id: str):
+    employee_service.delete(employee_id)
+    return {"deleted": employee_id}
 
 @router.get("/employees/{employee_id}")
 def get_employee(employee_id: str):
