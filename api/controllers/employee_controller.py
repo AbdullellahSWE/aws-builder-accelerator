@@ -30,16 +30,3 @@ def get_employee(employee_id: str):
         raise HTTPException(status_code=404, detail="Employee not found")
 
     return employee
-
-
-@router.get("/employees")
-def list_employees(hiredFrom: date | None = None, hiredTo: date | None = None):
-    if hiredFrom or hiredTo:
-        return {
-            "employees": employee_service.list_by_hire_date(
-                hiredFrom.isoformat() if hiredFrom else None,
-                hiredTo.isoformat() if hiredTo else None,
-            )
-        }
-
-    return {"employees": employee_service.list_all()}
