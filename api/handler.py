@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
-from controllers import employee_controller, leave_controller
+from controllers import employee_controller, hr_request_controller, leave_controller
 
 app = FastAPI(title="HR Leave Portal")
 
@@ -12,5 +12,6 @@ app.add_middleware(
 
 app.include_router(employee_controller.router)
 app.include_router(leave_controller.router)
+app.include_router(hr_request_controller.router)
 
 lambda_handler = Mangum(app)
