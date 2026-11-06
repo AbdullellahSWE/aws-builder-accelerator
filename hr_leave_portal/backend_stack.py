@@ -36,12 +36,21 @@ class BackendStack(Stack):
             ),
         )
 
+        fastapi_layer = lambda_.LayerVersion(
+            self,
+            "FastApiLayer",
+            code=lambda_.Code.from_asset("scripts/fastapi-layer.zip"),
+            compatible_runtimes=[lambda_.Runtime.PYTHON_3_14],
+            description="fastapi, pydantic, mangum, powertools for the HR API",
+        )
+
         api_function = lambda_.Function(
             self,
             "ApiFunction",
-            runtime=lambda_.Runtime.PYTHON_3_11,
+            runtime=lambda_.Runtime.PYTHON_3_14,
             handler="handler.lambda_handler",
             code=lambda_.Code.from_asset("api", exclude=["__pycache__", "*.pyc"]),
+            layers=[fastapi_layer],
             timeout=Duration.seconds(10),
             memory_size=512,
             environment={"TABLE_NAME": table.table_name},
@@ -76,11 +85,37 @@ class BackendStack(Stack):
             default_cors_preflight_options=apigw.CorsOptions(
                 allow_origins=apigw.Cors.ALL_ORIGINS,
                 allow_methods=apigw.Cors.ALL_METHODS,
+                allow_headers=[
+                    "Content-Type",
+                    "X-Amz-Date",
+                    "Authorization",
+                    "X-Api-Key",
+                    "X-Amz-Security-Token",
+                ],
             ),
             default_method_options=apigw.MethodOptions(
                 authorization_type=apigw.AuthorizationType.COGNITO,
                 authorizer=authorizer,
             ),
+        )
+
+        self.api.add_gateway_response(
+            "Default4XXCors",
+            type=apigw.ResponseType.DEFAULT_4_XX,
+            response_headers={
+                "Access-Control-Allow-Origin": "'*'",
+                "Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,DELETE'",
+            },
+        )
+        self.api.add_gateway_response(
+            "Default5XXCors",
+            type=apigw.ResponseType.DEFAULT_5_XX,
+            response_headers={
+                "Access-Control-Allow-Origin": "'*'",
+                "Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "Access-Control-Allow-Methods": "'OPTIONS,GET,POST,PUT,DELETE'",
+            },
         )
 
         CfnOutput(self, "ApiUrl", value=self.api.url)
