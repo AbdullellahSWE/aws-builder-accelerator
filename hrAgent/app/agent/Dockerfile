@@ -1,7 +1,5 @@
 FROM public.ecr.aws/docker/library/python:3.12-slim-trixie
 
-RUN apt-get update && apt-get upgrade -y && rm -rf /var/lib/apt/lists/*
-
 RUN pip install --no-cache-dir uv
 
 ARG UV_DEFAULT_INDEX
@@ -10,7 +8,6 @@ ARG UV_INDEX
 WORKDIR /app
 
 ENV UV_SYSTEM_PYTHON=1 \
-    UV_NO_CACHE=1 \
     UV_COMPILE_BYTECODE=1 \
     UV_NO_PROGRESS=1 \
     PYTHONUNBUFFERED=1 \
@@ -19,17 +16,13 @@ ENV UV_SYSTEM_PYTHON=1 \
     UV_INDEX=${UV_INDEX} \
     PATH="/app/.venv/bin:$PATH"
 
-
-ENV AWS_REGION=us-east-1
-ENV AWS_DEFAULT_REGION=us-east-1
-
 RUN useradd -m -u 1000 bedrock_agentcore
 
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 
 COPY --chown=bedrock_agentcore:bedrock_agentcore . .
-RUN uv sync --frozen --no-dev && /usr/local/bin/python -m pip uninstall -y uv
+RUN uv sync --frozen --no-dev
 
 USER bedrock_agentcore
 

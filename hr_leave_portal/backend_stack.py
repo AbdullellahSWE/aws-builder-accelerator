@@ -50,6 +50,7 @@ class BackendStack(Stack):
         table.grant_read_write_data(api_function)
 
         self.api_function = api_function
+        self.table = table
 
         self.user_pool = cognito.UserPool(
             self,

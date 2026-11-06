@@ -9,8 +9,7 @@ MODEL_ID = "global.anthropic.claude-sonnet-5"
 bedrock = boto3.client("bedrock-runtime")
 sns = boto3.client("sns")
 
-TOPIC_ARN = os.environ["HR_EMAIL_TOPIC_ARN"]
-
+TOPIC_ARN = os.environ.get("HR_EMAIL_TOPIC_ARN", "arn:aws:sns:us-east-1:194163347210:HrLeavePortalNotifications-HrEmailTopic915EFFDB-DtIXOm9nfBmV")
 
 @tool
 def generate_leave_email(
