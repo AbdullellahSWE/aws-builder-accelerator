@@ -1,0 +1,9 @@
+{
+  "default": {
+    "environment": {
+      "HR_EMAIL_TOPIC_ARN": "arn:aws:sns:us-east-1:194163347210:HrLeavePortalNotifications-HrEmailTopic915EFFDB-DtIXOm9nfBmV",
+      "DYNAMODB_TABLE_NAME": "HrLeavePortalBackend-HrTable0964620C-18P2CTYIJ0WWN",
+      "AWS_DEFAULT_REGION": "us-east-1"
+    }
+  }
+}

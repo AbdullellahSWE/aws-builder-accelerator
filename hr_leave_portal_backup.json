@@ -1,0 +1,239 @@
+{
+    "Items": [
+        {
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "department": {
+                "S": "People"
+            },
+            "employeeId": {
+                "S": "23acf053"
+            },
+            "role": {
+                "S": "admin"
+            },
+            "startDate": {
+                "S": "2023-07-24"
+            },
+            "GSI1SK": {
+                "S": "2023-07-24"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Jean Bartik"
+            },
+            "SK": {
+                "S": "23acf053"
+            }
+        },
+        {
+            "department": {
+                "S": "Engineering"
+            },
+            "employeeId": {
+                "S": "3ef4a0e6"
+            },
+            "role": {
+                "S": "admin"
+            },
+            "startDate": {
+                "S": "2023-01-15"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Grace Hopper"
+            },
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "GSI1SK": {
+                "S": "2023-01-15"
+            },
+            "SK": {
+                "S": "3ef4a0e6"
+            }
+        },
+        {
+            "department": {
+                "S": "Engineering"
+            },
+            "employeeId": {
+                "S": "bce1bc5c"
+            },
+            "role": {
+                "S": "employee"
+            },
+            "startDate": {
+                "S": "2024-06-03"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Ada Lovelace"
+            },
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "GSI1SK": {
+                "S": "2024-06-03"
+            },
+            "SK": {
+                "S": "bce1bc5c"
+            }
+        },
+        {
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "department": {
+                "S": "Finance"
+            },
+            "employeeId": {
+                "S": "c77e255b"
+            },
+            "role": {
+                "S": "employee"
+            },
+            "startDate": {
+                "S": "2022-09-01"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "GSI1SK": {
+                "S": "2022-09-01"
+            },
+            "name": {
+                "S": "Katherine Johnson"
+            },
+            "SK": {
+                "S": "c77e255b"
+            }
+        },
+        {
+            "department": {
+                "S": "Engineering"
+            },
+            "employeeId": {
+                "S": "cd353711"
+            },
+            "role": {
+                "S": "employee"
+            },
+            "startDate": {
+                "S": "2024-06-03"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Ada Lovelace"
+            },
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "GSI1SK": {
+                "S": "2024-06-03"
+            },
+            "SK": {
+                "S": "cd353711"
+            }
+        },
+        {
+            "department": {
+                "S": "Engineering"
+            },
+            "employeeId": {
+                "S": "d903ebc6"
+            },
+            "role": {
+                "S": "employee"
+            },
+            "startDate": {
+                "S": "2024-06-03"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Ada Lovelace"
+            },
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "GSI1SK": {
+                "S": "2024-06-03"
+            },
+            "SK": {
+                "S": "d903ebc6"
+            }
+        },
+        {
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "department": {
+                "S": "Engineering"
+            },
+            "employeeId": {
+                "S": "f8f78b6f"
+            },
+            "role": {
+                "S": "employee"
+            },
+            "startDate": {
+                "S": "2025-02-17"
+            },
+            "GSI1SK": {
+                "S": "2025-02-17"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Margaret Hamilton"
+            },
+            "SK": {
+                "S": "f8f78b6f"
+            }
+        },
+        {
+            "department": {
+                "S": "Finance"
+            },
+            "employeeId": {
+                "S": "fec369cf"
+            },
+            "role": {
+                "S": "employee"
+            },
+            "startDate": {
+                "S": "2024-06-03"
+            },
+            "PK": {
+                "S": "USER"
+            },
+            "name": {
+                "S": "Alan Turing"
+            },
+            "GSI1PK": {
+                "S": "USER_BY_DATE"
+            },
+            "GSI1SK": {
+                "S": "2024-06-03"
+            },
+            "SK": {
+                "S": "fec369cf"
+            }
+        }
+    ],
+    "Count": 8,
+    "ScannedCount": 8,
+    "ConsumedCapacity": null
+}
