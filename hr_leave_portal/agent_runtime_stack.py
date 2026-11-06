@@ -1,3 +1,4 @@
+import os
 from aws_cdk import (
     Aws,
     CfnOutput,
@@ -47,10 +48,22 @@ class AgentRuntimeStack(Stack):
             environment_variables={
                 "TABLE_NAME": table.table_name,
                 "HR_EMAIL_TOPIC_ARN": hr_email_topic.topic_arn,
+                "OPENROUTER_API_KEY": os.getenv("OPENROUTER_API_KEY", ""),
             })
 
         table.grant_read_write_data(agent_runtime.role)
         hr_email_topic.grant_publish(agent_runtime.role)
+
+        agent_runtime.add_to_role_policy(
+            iam.PolicyStatement(
+                actions=[
+                    "ssm:GetParameter",
+                ],
+                resources=[
+                    f"arn:aws:ssm:{Aws.REGION}:{Aws.ACCOUNT_ID}:parameter/hr-leave-portal/*"
+                ],
+            )
+        )
 
         agent_runtime.add_to_role_policy(
             iam.PolicyStatement(

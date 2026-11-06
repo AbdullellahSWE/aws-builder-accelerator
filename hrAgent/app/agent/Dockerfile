@@ -18,11 +18,11 @@ ENV UV_SYSTEM_PYTHON=1 \
 
 RUN useradd -m -u 1000 bedrock_agentcore
 
-COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen --no-dev --no-install-project
+COPY pyproject.toml ./
+RUN uv sync --no-dev --no-install-project && uv pip install openai
 
 COPY --chown=bedrock_agentcore:bedrock_agentcore . .
-RUN uv sync --frozen --no-dev
+RUN uv sync --no-dev && uv pip install openai
 
 USER bedrock_agentcore
 

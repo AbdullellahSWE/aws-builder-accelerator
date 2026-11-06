@@ -1,15 +1,15 @@
-import json
 import os
-
 import boto3
+from openai import OpenAI
 from strands import tool
+from model.load import get_openrouter_api_key
 
-MODEL_ID = "global.anthropic.claude-sonnet-5"
-
-bedrock = boto3.client("bedrock-runtime")
+TOPIC_ARN = os.environ.get(
+    "HR_EMAIL_TOPIC_ARN",
+    "arn:aws:sns:us-east-1:194163347210:HrLeavePortalNotifications-HrEmailTopic915EFFDB-DtIXOm9nfBmV",
+)
 sns = boto3.client("sns")
 
-TOPIC_ARN = os.environ.get("HR_EMAIL_TOPIC_ARN", "arn:aws:sns:us-east-1:194163347210:HrLeavePortalNotifications-HrEmailTopic915EFFDB-DtIXOm9nfBmV")
 
 @tool
 def generate_leave_email(
@@ -36,20 +36,16 @@ def generate_leave_email(
         "Return only the email text, starting with a subject line."
     )
 
-    response = bedrock.invoke_model(
-        modelId=MODEL_ID,
-        body=json.dumps(
-            {
-                "anthropic_version": "bedrock-2023-05-31",
-                "max_tokens": 1000,
-                # Sonnet 5 thinks by default; a short email doesn't need it.
-                "thinking": {"type": "disabled"},
-                "messages": [{"role": "user", "content": prompt}],
-            }
-        ))
-
-    result = json.loads(response["body"].read())
-    return result["content"][0]["text"]
+    client = OpenAI(
+        api_key=get_openrouter_api_key(),
+        base_url="https://openrouter.ai/api/v1",
+    )
+    response = client.chat.completions.create(
+        model="deepseek/deepseek-v4.1-flash-1017",
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=1000,
+    )
+    return response.choices[0].message.content
 
 
 @tool
