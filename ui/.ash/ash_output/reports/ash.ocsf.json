@@ -1,0 +1,425 @@
+[
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/eslint-plugin (via @typescript-eslint/parser, @typescript-eslint/type-utils, @typescript-eslint/utils) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/eslint-plugin in package.json - Transitive vulnerability in @typescript-eslint/e...",
+      "uid": "15f9e0ea-b0bf-422b-8903-a598ab09c6ce"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/eslint-plugin/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/eslint-plugin (via @typescript-eslint/parser, @typescript-eslint/type-utils, @typescript-eslint/utils) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/eslint-plugin"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/eslint-plugin (via @typescript-eslint/parser, @typescript-eslint/type-utils, @typescript-eslint/utils) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/eslint-plugin"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/parser (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/parser in package.json - Transitive vulnerability in @typescript-eslint/parser (...",
+      "uid": "bf4b6a15-f7ff-401e-b84b-d125d03a08a9"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/parser/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/parser (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/parser"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/parser (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/parser"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/type-utils (via @typescript-eslint/typescript-estree, @typescript-eslint/utils) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/type-utils in package.json - Transitive vulnerability in @typescript-eslint/type...",
+      "uid": "10915cae-ef0d-446a-b0d5-83978d900c2f"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/eslint-plugin/@typescript-eslint/type-utils/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/type-utils (via @typescript-eslint/typescript-estree, @typescript-eslint/utils) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/type-utils"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/type-utils (via @typescript-eslint/typescript-estree, @typescript-eslint/utils) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/type-utils"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/typescript-estree in package.json - Transitive vulnerability in @typescript-esli...",
+      "uid": "6b0a13c9-19db-4688-8e65-edc0ae993bb3"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/eslint-plugin/@typescript-eslint/type-utils/@typescript-eslint/typescript-estree/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/typescript-estree"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/typescript-estree"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/typescript-estree in package.json - Transitive vulnerability in @typescript-esli...",
+      "uid": "5cd8cb03-892b-4d5f-8778-bd81cd962d0d"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/parser/@typescript-eslint/typescript-estree/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/typescript-estree"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/typescript-estree"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/typescript-estree in package.json - Transitive vulnerability in @typescript-esli...",
+      "uid": "01f87785-6fd8-4533-a91f-4c69ff8b207e"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/utils/@typescript-eslint/typescript-estree/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/typescript-estree"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/typescript-estree"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in @typescript-eslint/utils (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2",
+      "title": "npm-audit-transitive-@typescript-eslint/utils in package.json - Transitive vulnerability in @typescript-eslint/utils (vi...",
+      "uid": "804fc91c-5f81-479c-b4ed-69db8a8e4fca"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/@typescript-eslint/utils/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in @typescript-eslint/utils (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2",
+          "uid": "npm-audit-transitive-@typescript-eslint/utils"
+        },
+        "desc": "Transitive vulnerability in @typescript-eslint/utils (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-@typescript-eslint/utils"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "minimatch has potential denial of service via globparts amplification in minimatch 7.0.0 - 11.0.0. https://github.com/advisories/GHSA-g3hv-75wg-m249",
+      "title": "GHSA-g3hv-75wg-m249 in package.json - minimatch has potential denial of service via globparts amplification in minimatch...",
+      "uid": "0eb0f5bc-968a-4dcf-9762-2a3a6a81e69b"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/minimatch/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "minimatch has potential denial of service via globparts amplification in minimatch 7.0.0 - 11.0.0. https://github.com/advisories/GHSA-g3hv-75wg-m249",
+          "uid": "GHSA-g3hv-75wg-m249"
+        },
+        "desc": "minimatch has potential denial of service via globparts amplification in minimatch 7.0.0 - 11.0.0. https://github.com/advisories/GHSA-g3hv-75wg-m249",
+        "severity": "WARNING",
+        "title": "GHSA-g3hv-75wg-m249"
+      }
+    ]
+  },
+  {
+    "activity_id": 1,
+    "activity_name": "Scan",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_uid": 2002,
+    "finding_info": {
+      "desc": "Transitive vulnerability in typescript-eslint (via @typescript-eslint/eslint-plugin, @typescript-eslint/parser, @typescript-eslint/utils) <=8.72.2",
+      "title": "npm-audit-transitive-typescript-eslint in package.json - Transitive vulnerability in typescript-eslint (via @typescript-...",
+      "uid": "7157a03e-35d4-494f-b56d-ab5d7a14b578"
+    },
+    "metadata": {
+      "logged_time": 1794343479762,
+      "product": {
+        "name": "Automated Security Helper",
+        "vendor_name": "Amazon Web Services",
+        "version": "3.7.0"
+      },
+      "version": "1.1.0"
+    },
+    "severity_id": 3,
+    "status": "New",
+    "status_id": 1,
+    "time": 1794343479762,
+    "type_uid": 200201,
+    "vulnerabilities": [
+      {
+        "affected_code": [
+          {
+            "file": {
+              "name": "package.json",
+              "path": "node_modules/typescript-eslint/package.json",
+              "type_id": 1
+            },
+            "start_line": 1
+          }
+        ],
+        "cve": {
+          "desc": "Transitive vulnerability in typescript-eslint (via @typescript-eslint/eslint-plugin, @typescript-eslint/parser, @typescript-eslint/utils) <=8.72.2",
+          "uid": "npm-audit-transitive-typescript-eslint"
+        },
+        "desc": "Transitive vulnerability in typescript-eslint (via @typescript-eslint/eslint-plugin, @typescript-eslint/parser, @typescript-eslint/utils) <=8.72.2",
+        "severity": "WARNING",
+        "title": "npm-audit-transitive-typescript-eslint"
+      }
+    ]
+  }
+]

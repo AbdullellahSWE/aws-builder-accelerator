@@ -1,0 +1,1 @@
+{"scanner_name": "npm-audit", "target": "/mnt/c/Users/sudro/projects/aws-builder-accelerator/ui", "target_type": "source", "exit_code": 1, "finding_count": 9, "start_time": "2026-11-10T20:42:16.623162Z", "end_time": "2026-11-10T20:42:18.486943Z", "duration": 1.863781, "severity_counts": {"medium": 9}, "status": "PASSED"}

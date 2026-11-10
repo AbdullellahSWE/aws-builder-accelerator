@@ -1,0 +1,1 @@
+{"scanner_name": "checkov", "target": "/mnt/c/Users/sudro/projects/aws-builder-accelerator/ui", "target_type": "source", "exit_code": 0, "finding_count": 0, "start_time": "2026-11-10T20:42:16.622544Z", "end_time": "2026-11-10T20:42:43.682165Z", "duration": 27.059621, "severity_counts": {}, "status": "PASSED"}

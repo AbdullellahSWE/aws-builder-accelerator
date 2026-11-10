@@ -1,0 +1,1 @@
+{"scanner_name": "semgrep", "target": "/mnt/c/Users/sudro/projects/aws-builder-accelerator/ui", "target_type": "source", "exit_code": 0, "finding_count": 0, "start_time": "2026-11-10T20:42:16.623040Z", "end_time": "2026-11-10T20:44:39.509116Z", "duration": 142.886076, "severity_counts": {}, "status": "PASSED"}

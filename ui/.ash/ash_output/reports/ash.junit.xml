@@ -1,0 +1,84 @@
+<testsuites name="ASH Scan Report"><testsuite name="npm-audit" tests="9" errors="9" failures="0" skipped="0" time="0"><testcase name="Transitive vulnerability in @typescript-eslint/eslint-plugin (via @typescript-eslint/parser, @typescript-eslint/type-utils, @typescript-eslint/utils) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/eslint-plugin]" classname="npm-audit-transitive-@typescript-eslint/eslint-plugin"><error message="Transitive vulnerability in @typescript-eslint/eslint-plugin (via @typescript-eslint/parser, @typescript-eslint/type-utils, @typescript-eslint/utils) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/eslint-plugin
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/eslint-plugin to a non-vulnerable version
+severity: moderate
+fix_available: True
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in @typescript-eslint/parser (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/parser]" classname="npm-audit-transitive-@typescript-eslint/parser"><error message="Transitive vulnerability in @typescript-eslint/parser (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/parser
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/parser to a non-vulnerable version
+severity: moderate
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in @typescript-eslint/type-utils (via @typescript-eslint/typescript-estree, @typescript-eslint/utils) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/type-utils]" classname="npm-audit-transitive-@typescript-eslint/type-utils"><error message="Transitive vulnerability in @typescript-eslint/type-utils (via @typescript-eslint/typescript-estree, @typescript-eslint/utils) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/type-utils
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/type-utils to a non-vulnerable version
+severity: moderate
+fix_available: True
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/typescript-estree]" classname="npm-audit-transitive-@typescript-eslint/typescript-estree"><error message="Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/typescript-estree
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/typescript-estree to a non-vulnerable version
+severity: moderate
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/typescript-estree]" classname="npm-audit-transitive-@typescript-eslint/typescript-estree"><error message="Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/typescript-estree
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/typescript-estree to a non-vulnerable version
+severity: moderate
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/typescript-estree]" classname="npm-audit-transitive-@typescript-eslint/typescript-estree"><error message="Transitive vulnerability in @typescript-eslint/typescript-estree (via minimatch) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/typescript-estree
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/typescript-estree to a non-vulnerable version
+severity: moderate
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in @typescript-eslint/utils (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2 [npm-audit-transitive-@typescript-eslint/utils]" classname="npm-audit-transitive-@typescript-eslint/utils"><error message="Transitive vulnerability in @typescript-eslint/utils (via @typescript-eslint/typescript-estree) 6.16.0 - 8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: @typescript-eslint/utils
+installed_version: 6.16.0 - 8.72.2
+vulnerable_versions: 6.16.0 - 8.72.2
+recommendation: Update @typescript-eslint/utils to a non-vulnerable version
+severity: moderate
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="minimatch has potential denial of service via globparts amplification in minimatch 7.0.0 - 11.0.0. https://github.com/advisories/GHSA-g3hv-75wg-m249 [GHSA-g3hv-75wg-m249]" classname="GHSA-g3hv-75wg-m249"><error message="minimatch has potential denial of service via globparts amplification in minimatch 7.0.0 - 11.0.0. https://github.com/advisories/GHSA-g3hv-75wg-m249" type="error" /><system-out>tags: ['npm-audit']
+package_name: minimatch
+installed_version: 7.0.0 - 11.0.0
+vulnerable_versions: 7.0.0 - 11.0.0
+recommendation: Update minimatch to a non-vulnerable version
+severity: moderate
+cwe: ['CWE-405']
+cvss: {'score': 0, 'vectorString': None}
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase><testcase name="Transitive vulnerability in typescript-eslint (via @typescript-eslint/eslint-plugin, @typescript-eslint/parser, @typescript-eslint/utils) &lt;=8.72.2 [npm-audit-transitive-typescript-eslint]" classname="npm-audit-transitive-typescript-eslint"><error message="Transitive vulnerability in typescript-eslint (via @typescript-eslint/eslint-plugin, @typescript-eslint/parser, @typescript-eslint/utils) &lt;=8.72.2" type="error" /><system-out>tags: ['npm-audit']
+package_name: typescript-eslint
+installed_version: &lt;=8.72.2
+vulnerable_versions: &lt;=8.72.2
+recommendation: Update typescript-eslint to a non-vulnerable version
+severity: moderate
+fix_available: {'name': 'typescript-eslint', 'version': '7.3.1', 'isSemVerMajor': True}
+scanner_name: npm-audit
+scanner_version: 3.7.0
+scanner_details: {'tool_name': 'npm-audit', 'tool_version': '3.7.0', 'tool_invocation': {'start_time': '2026-11-10T20:42:16.623162+00:00', 'end_time': '2026-11-10T20:42:18.486943+00:00'}}</system-out></testcase></testsuite></testsuites>

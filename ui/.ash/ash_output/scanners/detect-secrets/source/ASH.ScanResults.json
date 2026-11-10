@@ -1,0 +1,1 @@
+{"scanner_name": "detect-secrets", "target": "/mnt/c/Users/sudro/projects/aws-builder-accelerator/ui", "target_type": "source", "exit_code": 0, "finding_count": 0, "start_time": "2026-11-10T20:42:16.622940Z", "end_time": "2026-11-10T20:42:16.857963Z", "duration": 0.235023, "severity_counts": {}, "status": "PASSED"}
