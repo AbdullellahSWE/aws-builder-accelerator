@@ -1,3 +1,4 @@
+import os
 from aws_lambda_powertools import Logger, Tracer
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,8 +11,16 @@ tracer = Tracer()
 
 app = FastAPI(title="HR Leave Portal")
 
+# Pin CORS to local Vite dev server and deployed CloudFront UI
+allowed_origins = ["http://localhost:5173"]
+if os.environ.get("UI_ORIGIN"):
+    allowed_origins.append(os.environ["UI_ORIGIN"])
+
 app.add_middleware(
-    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 app.include_router(employee_controller.router)

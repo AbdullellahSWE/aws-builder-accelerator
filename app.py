@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
+import cdk_nag
+
 from hr_leave_portal.agent_runtime_stack import AgentRuntimeStack
 from hr_leave_portal.backend_stack import BackendStack
 from hr_leave_portal.dashboard_stack import DashboardStack
@@ -9,14 +11,21 @@ from hr_leave_portal.ui_stack import UiStack
 
 app = cdk.App()
 
-# Explicitly define target environment for the new AWS account
 env = cdk.Environment(
     account="194163347210",
     region="us-east-1"
 )
 
 notifications = NotificationStack(app, "HrLeavePortalNotifications", env=env)
-backend = BackendStack(app, "HrLeavePortalBackend", env=env)
+
+ui_origin = app.node.try_get_context("uiOrigin")
+
+backend = BackendStack(
+    app,
+    "HrLeavePortalBackend",
+    ui_origin=ui_origin,
+    env=env,
+)
 
 StateMachineStack(
     app,
@@ -45,5 +54,8 @@ DashboardStack(
     api=backend.api,
     env=env,
 )
+
+# Attach cdk-nag security checks across all stacks
+cdk.Aspects.of(app).add(cdk_nag.AwsSolutionsChecks(verbose=True))
 
 app.synth()

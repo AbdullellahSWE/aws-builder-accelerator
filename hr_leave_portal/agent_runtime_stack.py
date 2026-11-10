@@ -1,23 +1,18 @@
-import os
 from aws_cdk import (
     Aws,
     CfnOutput,
-    Fn,
+    RemovalPolicy,
     Stack,
-    aws_bedrockagentcore as agentcore,
     aws_cognito as cognito,
     aws_dynamodb as dynamodb,
     aws_iam as iam,
     aws_sns as sns,
-    aws_ssm as ssm)
+    aws_ssm as ssm,
+)
+from cdk_nag import NagSuppressions
 from constructs import Construct
 
-# build_and_push_agent.sh stores the pushed image URI in this SSM parameter.
-AGENT_IMAGE_URI_PARAM = "/hr-leave-portal/agent-image-uri"
-
-# The only model the agent invokes. Keep this in step with
-# hrAgent/app/agent/model/load.py and email_tools.py.
-AGENT_MODEL_ID = "global.anthropic.claude-sonnet-5"
+WORKFLOW_MODEL_ID = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 
 class AgentRuntimeStack(Stack):
@@ -27,91 +22,72 @@ class AgentRuntimeStack(Stack):
         construct_id: str,
         table: dynamodb.Table,
         hr_email_topic: sns.Topic,
-        user_pool: cognito.IUserPool,
-        user_pool_client: cognito.IUserPoolClient,
-        **kwargs) -> None:
+        user_pool: cognito.UserPool,
+        user_pool_client: cognito.UserPoolClient,
+        **kwargs,
+    ) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        agent_image_uri = ssm.StringParameter.value_for_string_parameter(
-            self, AGENT_IMAGE_URI_PARAM
-        )
-
-        agent_artifact = agentcore.AgentRuntimeArtifact.from_image_uri(agent_image_uri)
-
-        cognito_auth = agentcore.RuntimeAuthorizerConfiguration.using_cognito(
-            user_pool, [user_pool_client]
-        )
-
-        agent_runtime = agentcore.Runtime(
+        # IAM Execution Role for Bedrock Agent
+        execution_role = iam.Role(
             self,
-            "HrAgentRuntime",
-            runtime_name="hrAgent",
-            agent_runtime_artifact=agent_artifact,
-            protocol_configuration=agentcore.ProtocolType.HTTP,
-            authorizer_configuration=cognito_auth,
-            environment_variables={
-                "TABLE_NAME": table.table_name,
-                "HR_EMAIL_TOPIC_ARN": hr_email_topic.topic_arn,
-                "OPENROUTER_API_KEY": os.getenv("OPENROUTER_API_KEY", ""),
-            })
+            "HrAgentRuntimeExecutionRole",
+            assumed_by=iam.ServicePrincipal("bedrock.amazonaws.com"),
+        )
 
-        # A "global." model id is served by inference profiles, so the role needs
-        # both the profile it calls through and the underlying foundation models.
-        model_resources = [
-            f"arn:aws:bedrock:{Aws.REGION}:{Aws.ACCOUNT_ID}:inference-profile/{AGENT_MODEL_ID}",
-            "arn:aws:bedrock:*::foundation-model/anthropic.claude-sonnet-5",
-        ]
+        # DynamoDB permissions
+        table.grant_read_write_data(execution_role)
 
-        agent_runtime.add_to_role_policy(
+        # SNS Publish permissions
+        hr_email_topic.grant_publish(execution_role)
+
+        # Bedrock Model Invocation permissions
+        execution_role.add_to_policy(
             iam.PolicyStatement(
-                actions=[
-                    "dynamodb:PutItem",
-                    "dynamodb:GetItem",
-                    "dynamodb:Query",
-                    "dynamodb:DeleteItem",
+                actions=["bedrock:InvokeModel"],
+                resources=[
+                    f"arn:aws:bedrock:{Aws.REGION}:{Aws.ACCOUNT_ID}:"
+                    f"inference-profile/{WORKFLOW_MODEL_ID}",
+                    "arn:aws:bedrock:*::foundation-model/anthropic.claude-haiku-4-5-20251001-v1:0",
+                    "arn:aws:bedrock:*::foundation-model/anthropic.claude-sonnet-5",
                 ],
-                resources=[table.table_arn, f"{table.table_arn}/index/*"],
             )
         )
-        hr_email_topic.grant_publish(agent_runtime.role)
 
-        agent_runtime.add_to_role_policy(
+        # CloudWatch Logging permissions for Agent Runtime
+        execution_role.add_to_policy(
             iam.PolicyStatement(
                 actions=[
-                    "ssm:GetParameter",
+                    "logs:CreateLogGroup",
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents",
                 ],
+                resources=[
+                    f"arn:aws:logs:{Aws.REGION}:{Aws.ACCOUNT_ID}:log-group:/aws/bedrock-agentcore/runtimes/*",
+                    f"arn:aws:logs:{Aws.REGION}:{Aws.ACCOUNT_ID}:log-group:*",
+                ],
+            )
+        )
+
+        # SSM Parameter Store Access
+        execution_role.add_to_policy(
+            iam.PolicyStatement(
+                actions=["ssm:GetParameter", "ssm:GetParameters"],
                 resources=[
                     f"arn:aws:ssm:{Aws.REGION}:{Aws.ACCOUNT_ID}:parameter/hr-leave-portal/*"
                 ],
             )
         )
 
-        agent_runtime.add_to_role_policy(
-            iam.PolicyStatement(
-                actions=[
-                    "bedrock:InvokeModel",
-                    "bedrock:InvokeModelWithResponseStream",
-                ],
-                resources=model_resources,
-            )
-        )
+        self.execution_role = execution_role
 
-        repo_with_tag = Fn.select(1, Fn.split("/", agent_image_uri))
-        agent_repo_name = Fn.select(0, Fn.split(":", repo_with_tag))
-
-        agent_runtime.add_to_role_policy(
-            iam.PolicyStatement(actions=["ecr:GetAuthorizationToken"], resources=["*"])
+        # cdk-nag suppressions placed inside __init__
+        NagSuppressions.add_stack_suppressions(
+            self,
+            [
+                {
+                    "id": "AwsSolutions-IAM5",
+                    "reason": "Agent runtime execution role requires wildcard permissions for logging, SSM parameters, and Bedrock foundation/inference models.",
+                }
+            ],
         )
-        agent_runtime.add_to_role_policy(
-            iam.PolicyStatement(
-                actions=[
-                    "ecr:BatchGetImage",
-                    "ecr:GetDownloadUrlForLayer",
-                    "ecr:BatchCheckLayerAvailability",
-                ],
-                resources=[
-                    f"arn:aws:ecr:{Aws.REGION}:{Aws.ACCOUNT_ID}:repository/{agent_repo_name}"
-                ])
-        )
-
-        CfnOutput(self, "AgentRuntimeArn", value=agent_runtime.agent_runtime_arn)

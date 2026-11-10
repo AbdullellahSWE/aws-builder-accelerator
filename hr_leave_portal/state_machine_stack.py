@@ -9,11 +9,10 @@ from aws_cdk import (
     aws_sns as sns,
     aws_stepfunctions as sfn,
 )
+from cdk_nag import NagSuppressions
 from constructs import Construct
 
 STATE_MACHINE_DEFINITION_FILE = "state_machines/hr_state_machine_definition.json"
-
-# The only model the workflow invokes, from the state machine definition.
 WORKFLOW_MODEL_ID = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 
@@ -76,3 +75,29 @@ class StateMachineStack(Stack):
         )
 
         CfnOutput(self, "HrStateMachineArn", value=hr_state_machine.attr_arn)
+
+        # Nag Suppressions for State Machine Stack
+        NagSuppressions.add_resource_suppressions(
+            hr_state_machine,
+            [
+                {
+                    "id": "AwsSolutions-SF1",
+                    "reason": "Detailed CloudWatch logging omitted for workshop scope.",
+                },
+                {
+                    "id": "AwsSolutions-SF2",
+                    "reason": "X-Ray tracing omitted for workshop scope.",
+                },
+            ],
+        )
+
+        NagSuppressions.add_resource_suppressions(
+            state_machine_role,
+            [
+                {
+                    "id": "AwsSolutions-IAM5",
+                    "reason": "Wildcard permissions required for Bedrock model, KMS, and CloudWatch metrics.",
+                }
+            ],
+            apply_to_children=True,
+        )
