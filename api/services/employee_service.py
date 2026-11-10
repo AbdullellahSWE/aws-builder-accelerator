@@ -67,3 +67,10 @@ def list_by_hire_date(hired_from: str, hired_to: str) -> list[dict]:
     items = response["Items"]
     logger.info("listed employees by hire date", count=len(items))
     return items
+
+
+@tracer.capture_method
+def delete(employee_id: str) -> None:
+    logger.info("deleting employee", employee_id=employee_id)
+    table.delete_item(Key={"PK": "USER", "SK": employee_id})
+
