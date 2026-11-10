@@ -3,6 +3,7 @@ from aws_cdk import (
     CfnOutput,
     RemovalPolicy,
     Stack,
+    aws_bedrock as bedrock,
     aws_cognito as cognito,
     aws_dynamodb as dynamodb,
     aws_iam as iam,
@@ -13,7 +14,6 @@ from cdk_nag import NagSuppressions
 from constructs import Construct
 
 WORKFLOW_MODEL_ID = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
-
 
 class AgentRuntimeStack(Stack):
     def __init__(
@@ -28,7 +28,7 @@ class AgentRuntimeStack(Stack):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        # IAM Execution Role for Bedrock Agent
+        # 1. IAM Execution Role for Bedrock Agent
         execution_role = iam.Role(
             self,
             "HrAgentRuntimeExecutionRole",
@@ -79,7 +79,42 @@ class AgentRuntimeStack(Stack):
             )
         )
 
+        # 2. Amazon Bedrock Guardrail
+        guardrail = bedrock.CfnGuardrail(
+            self,
+            "HrAgentGuardrail",
+            name="hr-agent-guardrail",
+            blocked_input_messaging="I can't help with that request.",
+            blocked_outputs_messaging="I can't share that.",
+            sensitive_information_policy_config=bedrock.CfnGuardrail.SensitiveInformationPolicyConfigProperty(
+                pii_entities_config=[
+                    bedrock.CfnGuardrail.PiiEntityConfigProperty(type="EMAIL", action="ANONYMIZE"),
+                    bedrock.CfnGuardrail.PiiEntityConfigProperty(type="PHONE", action="ANONYMIZE"),
+                    bedrock.CfnGuardrail.PiiEntityConfigProperty(type="US_SOCIAL_SECURITY_NUMBER", action="BLOCK"),
+                ]
+            ),
+            content_policy_config=bedrock.CfnGuardrail.ContentPolicyConfigProperty(
+                filters_config=[
+                    bedrock.CfnGuardrail.ContentFilterConfigProperty(
+                        type="PROMPT_ATTACK",
+                        input_strength="HIGH",
+                        output_strength="NONE"
+                    ),
+                ]
+            ),
+        )
+
+        # Grant execution role permission to apply the guardrail
+        execution_role.add_to_policy(
+            iam.PolicyStatement(
+                actions=["bedrock:ApplyGuardrail"],
+                resources=[guardrail.attr_guardrail_arn]
+            )
+        )
+
         self.execution_role = execution_role
+        self.guardrail_id = guardrail.attr_guardrail_id
+        self.guardrail_version = guardrail.attr_version
 
         # cdk-nag suppressions placed inside __init__
         NagSuppressions.add_stack_suppressions(
