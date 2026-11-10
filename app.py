@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import aws_cdk as cdk
 import cdk_nag
+# from aws_cdk import Validations
+from cdk_nag import AwsSolutionsChecks
 
 from hr_leave_portal.agent_runtime_stack import AgentRuntimeStack
 from hr_leave_portal.backend_stack import BackendStack
@@ -10,6 +12,11 @@ from hr_leave_portal.state_machine_stack import StateMachineStack
 from hr_leave_portal.ui_stack import UiStack
 
 app = cdk.App()
+
+
+# Validations.of(app).add_plugins(AwsSolutionsChecks(app, verbose=True))
+
+
 
 env = cdk.Environment(
     account="194163347210",

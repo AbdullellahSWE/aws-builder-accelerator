@@ -1,8 +1,10 @@
 from aws_cdk import (
+    Acknowledgment,
     CfnOutput,
     Duration,
     RemovalPolicy,
     Stack,
+    Validations,
     aws_apigateway as apigw,
     aws_cognito as cognito,
     aws_dynamodb as dynamodb,
@@ -148,6 +150,22 @@ class BackendStack(Stack):
         CfnOutput(self, "UserPoolId", value=self.user_pool.user_pool_id)
         CfnOutput(
             self, "UserPoolClientId", value=self.user_pool_client.user_pool_client_id
+        )
+
+        # Findings we've read and decided to accept. Keep them last so they're
+        # easy to find, and never add one without a reason.
+        Validations.of(self).acknowledge(
+            Acknowledgment(
+                id="AwsSolutions::AwsSolutions-COG2",
+                reason="WORKSHOP ONLY. MFA is not enabled to keep sign-in to one step. A real "
+                       "HR system must enable it, see /security/conclusion/.",
+            ),
+            Acknowledgment(
+                id="AwsSolutions::AwsSolutions-APIG4",
+                reason="Fires on CORS preflight OPTIONS methods, which must be unauthenticated. "
+                       "Every other method inherits the Cognito authorizer through "
+                       "default_method_options.",
+            ),
         )
 
         # cdk-nag suppressions for Backend Stack
